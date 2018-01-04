@@ -13,6 +13,10 @@ cache can be saved to and loaded from a file (using `c.Items()` to retrieve the
 items map to serialize, and `NewFrom()` to create a cache from a deserialized
 one) to recover from downtime quickly. (See the docs for `NewFrom()` for caveats.)
 
+In this fork of the original repo, the map of which is used inside the caching 
+component is the ```sync.Map``` instead of using the the default ```Map``` with 
+all the locking/unlocking boilerplate. 
+
 ### Installation
 
 `go get github.com/patrickmn/go-cache`
