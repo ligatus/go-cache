@@ -7,6 +7,7 @@ import (
 	insecurerand "math/rand"
 	"os"
 	"runtime"
+	"sync"
 	"time"
 )
 
@@ -171,7 +172,7 @@ func newShardedCache(n int, de time.Duration) *shardedCache {
 	for i := 0; i < n; i++ {
 		c := &cache{
 			defaultExpiration: de,
-			items:             map[string]Item{},
+			items:             sync.Map{},
 		}
 		sc.cs[i] = c
 	}
